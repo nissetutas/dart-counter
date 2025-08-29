@@ -352,9 +352,10 @@ input#score {
 }
 
 /* Media query för små skärmar (t.ex. telefoner) */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .card.header {
     padding: 8px; /* Ytterligare minskad padding på små skärmar */
+    background: rgba(255, 0, 0, 0.1); /* Tillfällig debug-färg för att bekräfta att media queryn triggas */
   }
 
   .header_row_one {
