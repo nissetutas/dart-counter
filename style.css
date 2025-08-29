@@ -196,6 +196,7 @@ button:disabled {
   font-size: 1.5rem;
   margin: 0;
   white-space: nowrap;
+  flex-grow: 1; /* Fyller utrymme för att forcera knappar till höger */
 }
 
 .actions {
@@ -204,10 +205,10 @@ button:disabled {
 }
 
 .actions button {
-  padding: 12px; /* Ökat för större knappar */
-  font-size: 1.2rem; /* Ökat för bättre synlighet av symboler */
-  width: 48px; /* Ökat för större knappar */
-  height: 48px; /* Ökat för större knappar */
+  padding: 10px; /* Minskat lite för att spara plats */
+  font-size: 1.1rem; /* Minskat för att passa på rad */
+  width: 40px; /* Minskat för att passa på rad */
+  height: 40px; /* Minskat för att passa på rad */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -388,12 +389,14 @@ input#score::-webkit-outer-spin-button {
   .header_row_one {
     flex-direction: row; /* Håller element horisontella */
     align-items: center;
-    justify-content: flex-end; /* Flyttar allt till höger */
-    gap: 8px;
+    gap: 4px; /* Minskat gap för att spara plats */
   }
 
   .header_row_one h2 {
-    flex-shrink: 0; /* Hindrar h2 från att krympa för mycket */
+    font-size: 1.2rem; /* Minskat för att passa på rad */
+    flex-grow: 1; /* Fyller utrymme för att forcera knappar till höger */
+    margin: 0;
+    white-space: nowrap;
   }
 
   .header_row_one .actions {
@@ -423,10 +426,10 @@ input#score::-webkit-outer-spin-button {
   }
 
   .actions button {
-    padding: 12px;
-    font-size: 1.2rem;
-    width: 48px;
-    height: 48px;
+    padding: 10px;
+    font-size: 1.1rem;
+    width: 40px;
+    height: 40px;
     text-indent: -9999px;
     overflow: hidden;
     position: relative;
@@ -443,17 +446,5 @@ input#score::-webkit-outer-spin-button {
     width: 100%;
     height: 100%;
     font-size: inherit;
-  }
-}
-
-/* Extra media query för mycket små skärmar */
-@media (max-width: 600px) {
-  .header_row_one {
-    flex-direction: column; /* Tvingar vertikal stapling på mycket små skärmar */
-    align-items: flex-start;
-  }
-
-  .header_row_one .actions {
-    margin-left: 0; /* Tar bort auto-marginal i vertikal layout */
   }
 }
