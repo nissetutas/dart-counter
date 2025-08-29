@@ -58,7 +58,7 @@ body {
 }
 
 #game .card {
- /* margin-top: 12px; */
+  /* margin-top: 12px; */
 }
 
 #game .card.header {
@@ -178,9 +178,71 @@ button:disabled {
 }
 
 /* ===== Header ===== */
-.game-meta p {
+.card.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* Minskat från 8px för att spara vertikalt utrymme */
+  padding: 10px; /* Minskat från 14px för en tätare layout */
+}
+
+.header_row_one {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px; /* Lägger till mellanrum för att undvika överlappning */
+}
+
+.header_row_one h2 {
+  font-size: 1.5rem; /* Minskat för att spara utrymme */
   margin: 0;
-  color: var(--muted);
+  white-space: nowrap; /* Förhindrar radbrytning av "Spel: 301" */
+}
+
+.actions {
+  display: flex;
+  gap: 6px; /* Minskat från 8px för att göra knapparna mer kompakta */
+}
+
+.actions button {
+  padding: 8px 10px; /* Minskat padding för mindre knappar */
+  font-size: 0.9rem; /* Mindre textstorlek */
+}
+
+.header_row_two {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.header_row_two .left_side {
+  flex: 1;
+}
+
+.header_row_two .right_side {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Minskat från 8px för att spara utrymme */
+}
+
+.header_row_two p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 0.9rem; /* Minskat för att minska radbrytning */
+  white-space: nowrap; /* Försöker hålla texten på en rad */
+}
+
+.input_actions {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Minskat från 8px */
+}
+
+input#score {
+  font-size: 0.8rem;
+  padding: 8px 10px; /* Minskat padding för att spara utrymme */
+  height: auto;
+  width: 100px; /* Minskat från 120px för att ge mer plats till turnHint */
 }
 
 /* ===== Spelare / Mobil layout ===== */
@@ -199,7 +261,7 @@ button:disabled {
   box-shadow: 0 6px 18px rgba(0,0,0,.22);
   display: grid;
   grid-template-rows: auto auto;
-  gap: 0px;
+  gap: 0px; /* Behåller 0px från din senaste ändring */
   transition: transform 0.2s, border-color 0.2s;
 }
 .player.card.active {
@@ -215,7 +277,7 @@ button:disabled {
   gap: 4px;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0; /* Säkerställer att ingen extra marginal läggs till */
+  margin: 0;
 }
 .player.card .row1 .name {
   font-weight: 700;
@@ -233,8 +295,8 @@ button:disabled {
   justify-content: space-between;
   align-items: center;
   gap: 4px;
-  flex-wrap: nowrap; /* Förhindra radbrytning */
-  margin: 0; /* Säkerställer att ingen extra marginal läggs till */
+  flex-wrap: nowrap;
+  margin: 0;
 }
 .player.card .row2 .checkouts {
   background: var(--card);
@@ -243,17 +305,17 @@ button:disabled {
   color: var(--ink);
   font-style: normal;
   font-size: 0.9rem;
-  flex: 1; /* Ta upp tillgängligt utrymme */
-  max-width: 60%; /* Begränsa bredden för att ge plats åt snitt */
-  overflow: hidden; /* Klipp lång text */
-  text-overflow: ellipsis; /* Visa ellips för lång text */
-  white-space: nowrap; /* Förhindra radbrytning i checkouts */
+  flex: 1;
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .player.card .row2 .average {
-  font-size: 0.9rem; /* Samma storlek som utgångar */
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--muted);
-  flex-shrink: 0; /* Förhindra att snittet krymper */
+  flex-shrink: 0;
 }
 
 /* ===== Inmatning (sticky i mobil) ===== */
@@ -289,72 +351,39 @@ button:disabled {
   margin: 14px 0 6px;
 }
 
-.card.header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
+/* Media query för små skärmar (t.ex. telefoner) */
+@media (max-width: 600px) {
+  .card.header {
+    padding: 8px; /* Ytterligare minskad padding på små skärmar */
+  }
 
-.header_row_one {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .header_row_one {
+    flex-direction: column; /* Stapla h2 och actions vertikalt */
+    align-items: flex-start;
+    gap: 4px;
+  }
 
-.header_row_two {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .header_row_two {
+    flex-direction: column; /* Stapla left_side och right_side vertikalt */
+    align-items: flex-start;
+    gap: 4px;
+  }
 
-.header_row_two .left_side {
-  flex: 1;
-}
+  .header_row_two .right_side {
+    width: 100%; /* Gör input och knappar fullbredd */
+  }
 
-.header_row_two .right_side {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+  input#score {
+    width: 100%; /* Gör input flexibel */
+    max-width: 120px; /* Begränsar maxbredd */
+  }
 
-.header_row_two p {
-  margin: 0;
-  font-weight: bold;
-}
+  .actions button {
+    padding: 6px 8px; /* Ännu mindre knappar på små skärmar */
+    font-size: 0.85rem;
+  }
 
-.input_actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.row_two > div {
-  flex: none;
-  width: 50%;
-  min-width: 120px;
-}
-
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  appearance: none;
-  margin: 0;
-}
-
-input[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfield;
-}
-
-input#score {
-  font-size: 0.8rem;
-  padding: 10px 14px;
-  height: auto;
-  width: 120px;
-}
-
-#game {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  .header_row_two p {
+    font-size: 0.85rem; /* Ännu mindre text för att undvika radbrytning */
+  }
 }
