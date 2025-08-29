@@ -58,7 +58,7 @@ body {
 }
 
 #game .card {
-  /* margin-top: 12px; */
+  margin-bottom: 12px; /* Ökat avstånd mellan boxar */
 }
 
 #game .card.header {
@@ -181,31 +181,52 @@ button:disabled {
 .card.header {
   display: flex;
   flex-direction: column;
-  gap: 6px; /* Minskat från 8px för att spara vertikalt utrymme */
-  padding: 10px; /* Minskat från 14px för en tätare layout */
+  gap: 6px;
+  padding: 10px;
 }
 
 .header_row_one {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px; /* Lägger till mellanrum för att undvika överlappning */
+  gap: 8px;
 }
 
 .header_row_one h2 {
-  font-size: 1.5rem; /* Minskat för att spara utrymme */
+  font-size: 1.5rem;
   margin: 0;
-  white-space: nowrap; /* Förhindrar radbrytning av "Spel: 301" */
+  white-space: nowrap;
 }
 
 .actions {
   display: flex;
-  gap: 6px; /* Minskat från 8px för att göra knapparna mer kompakta */
+  gap: 6px;
 }
 
 .actions button {
-  padding: 8px 10px; /* Minskat padding för mindre knappar */
-  font-size: 0.9rem; /* Mindre textstorlek */
+  padding: 12px; /* Ökat för större knappar */
+  font-size: 1.2rem; /* Ökat för bättre synlighet av symboler */
+  width: 48px; /* Ökat för större knappar */
+  height: 48px; /* Ökat för större knappar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-indent: -9999px; /* Döljer originaltext */
+  overflow: hidden;
+  position: relative;
+}
+.actions button::after {
+  content: attr(data-symbol); /* Visar symbolen från data-symbol */
+  text-indent: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: inherit; /* Ärver font-size från knappen */
 }
 
 .header_row_two {
@@ -222,33 +243,33 @@ button:disabled {
 .header_row_two .right_side {
   display: flex;
   align-items: center;
-  gap: 6px; /* Minskat från 8px för att spara utrymme */
+  gap: 6px;
 }
 
 .header_row_two p {
   margin: 0;
   font-weight: bold;
-  font-size: 0.9rem; /* Minskat för att minska radbrytning */
-  white-space: nowrap; /* Försöker hålla texten på en rad */
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .input_actions {
   display: flex;
   align-items: center;
-  gap: 6px; /* Minskat från 8px */
+  gap: 6px;
 }
 
 input#score {
   font-size: 0.8rem;
-  padding: 8px 10px; /* Minskat padding för att spara utrymme */
+  padding: 8px 10px;
   height: auto;
-  width: 100px; /* Minskat från 120px för att ge mer plats till turnHint */
+  width: 100px;
 }
 
 /* ===== Spelare / Mobil layout ===== */
 .players {
   display: grid;
-  grid-template-columns: 1fr; /* Alltid en kolumn för full bredd */
+  grid-template-columns: 1fr;
   gap: 6px;
   margin: 0;
 }
@@ -261,7 +282,7 @@ input#score {
   box-shadow: 0 6px 18px rgba(0,0,0,.22);
   display: grid;
   grid-template-rows: auto auto;
-  gap: 0px; /* Behåller 0px från din senaste ändring */
+  gap: 0px;
   transition: transform 0.2s, border-color 0.2s;
 }
 .player.card.active {
@@ -286,7 +307,7 @@ input#score {
   min-width: 100px;
 }
 .player.card .row1 .score {
-  font-size: 1.8rem; /* Ökad storlek för poäng */
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--accent);
 }
@@ -351,40 +372,57 @@ input#score {
   margin: 14px 0 6px;
 }
 
-/* Media query för små skärmar (t.ex. telefoner) */
-@media (max-width: 768px) {
+/* Media query för små skärmar (t.ex. telefoner och landskap) */
+@media (max-width: 992px) {
   .card.header {
-    padding: 8px; /* Ytterligare minskad padding på små skärmar */
-    background: rgba(255, 0, 0, 0.1); /* Tillfällig debug-färg för att bekräfta att media queryn triggas */
+    padding: 8px;
   }
 
   .header_row_one {
-    flex-direction: column; /* Stapla h2 och actions vertikalt */
+    flex-direction: column;
     align-items: flex-start;
     gap: 4px;
   }
 
+  .header_row_one .actions {
+    margin-left: auto; /* Flyttar actions till höger */
+  }
+
   .header_row_two {
-    flex-direction: column; /* Stapla left_side och right_side vertikalt */
+    flex-direction: column;
     align-items: flex-start;
     gap: 4px;
   }
 
   .header_row_two .right_side {
-    width: 100%; /* Gör input och knappar fullbredd */
+    width: 100%;
   }
 
   input#score {
-    width: 100%; /* Gör input flexibel */
-    max-width: 120px; /* Begränsar maxbredd */
+    width: 100%;
+    max-width: 120px;
   }
 
   .actions button {
-    padding: 6px 8px; /* Ännu mindre knappar på små skärmar */
-    font-size: 0.85rem;
+    padding: 12px;
+    font-size: 1.2rem;
+    width: 48px;
+    height: 48px;
+    text-indent: -9999px;
+    overflow: hidden;
+    position: relative;
   }
-
-  .header_row_two p {
-    font-size: 0.85rem; /* Ännu mindre text för att undvika radbrytning */
+  .actions button::after {
+    content: attr(data-symbol);
+    text-indent: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: inherit;
   }
 }
