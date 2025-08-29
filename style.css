@@ -264,6 +264,13 @@ input#score {
   padding: 8px 10px;
   height: auto;
   width: 100px;
+  -webkit-appearance: none; /* Tar bort pilar i Webkit-baserade webbläsare (t.ex. Safari, Chrome) */
+  -moz-appearance: textfield; /* Tar bort pilar i Firefox */
+}
+input#score::-webkit-inner-spin-button,
+input#score::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* ===== Spelare / Mobil layout ===== */
@@ -372,20 +379,25 @@ input#score {
   margin: 14px 0 6px;
 }
 
-/* Media query för små skärmar (t.ex. telefoner och landskap) */
+/* Media query för små skärmar (t.ex. telefoner) */
 @media (max-width: 992px) {
   .card.header {
     padding: 8px;
   }
 
   .header_row_one {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+    flex-direction: row; /* Håller element horisontella */
+    align-items: center;
+    justify-content: flex-end; /* Flyttar allt till höger */
+    gap: 8px;
+  }
+
+  .header_row_one h2 {
+    flex-shrink: 0; /* Hindrar h2 från att krympa för mycket */
   }
 
   .header_row_one .actions {
-    margin-left: auto; /* Flyttar actions till höger */
+    margin-left: auto; /* Håller knapparna till höger */
   }
 
   .header_row_two {
@@ -401,6 +413,13 @@ input#score {
   input#score {
     width: 100%;
     max-width: 120px;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+  }
+  input#score::-webkit-inner-spin-button,
+  input#score::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   .actions button {
@@ -424,5 +443,17 @@ input#score {
     width: 100%;
     height: 100%;
     font-size: inherit;
+  }
+}
+
+/* Extra media query för mycket små skärmar */
+@media (max-width: 600px) {
+  .header_row_one {
+    flex-direction: column; /* Tvingar vertikal stapling på mycket små skärmar */
+    align-items: flex-start;
+  }
+
+  .header_row_one .actions {
+    margin-left: 0; /* Tar bort auto-marginal i vertikal layout */
   }
 }
