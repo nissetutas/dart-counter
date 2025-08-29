@@ -13,7 +13,7 @@
     <h1>🎯 Dart‑räknare</h1>
     <div class="card">
       <div class="row">
-        <label for="names">Spelare (spelordning, kommaseparerade)</label>
+        <label for="names">Spelare (kommaseparerade)</label>
         <input id="names" type="text" placeholder="t.ex. Anna, Bo, Cecilia" />
       </div>
       <div class="row_two">
@@ -79,12 +79,15 @@
       <h3>🏆 Vinster</h3>
       <ol id="top10Game" class="list ordered"></ol>
     </section>
-    <div class="theme-buttons">
-      <button id="themeLightBtn" class="theme-btn" title="Ljust tema">☀️</button>
-      <button id="themeDarkBtn" class="theme-btn" title="Mörkt tema">🌙</button>
-    </div>
     <footer class="footer">Dart‑räknare – 2025</footer>
   </main>
+
+  <!-- Theme buttons (moved to be global) -->
+  <div class="theme-buttons">
+    <button id="themeLightBtn" class="theme-btn" title="Ljust tema">☀️</button>
+    <button id="themeDarkBtn" class="theme-btn" title="Mörkt tema">🌙</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
