@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Dart‑räknare 301/501</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%2300c853'/><path d='M20 50 L70 30 L55 70 Z' fill='white'/></svg>">
+</head>
+<body>
+  <!-- START -->
+  <main id="start" class="wrap centered">
+    <h1>🎯 Dart‑räknare</h1>
+    <div class="card">
+      <div class="row">
+        <label for="names">Spelare (spelordning, kommaseparerade)</label>
+        <input id="names" type="text" placeholder="t.ex. Anna, Bo, Cecilia" />
+      </div>
+      <div class="row_two">
+        <div>
+          <label for="mode">Speltyp</label>
+          <select id="mode">
+            <option value="301" selected>301</option>
+            <option value="501">501</option>
+          </select>
+        </div>
+        <div>
+          <label for="playType">Spelform</label>
+          <select id="playType">
+            <option value="individual" selected>Individ</option>
+            <option value="teams">Lag</option>
+          </select>
+          <div id="teamHint" class="hint muted" style="display:none;">
+            I lagspel delas spelarna in parvis (2 och 2).<br>
+            Laget har gemensam poäng.<br>
+            Vid udda antal får sista spelaren ett eget lag.
+          </div>
+        </div>
+      </div>
+      <div>
+        <button id="startBtn" class="primary">Starta spel</button>
+      </div>
+    </div>
+    <section class="card leaderboard" style="display:none;">
+      <h3>🏆 Topp 10 vinnare</h3>
+      <ol id="top10" class="list ordered"></ol>
+    </section>
+  </main>
+
+  <!-- GAME -->
+  <main id="game" class="wrap hidden">
+    <section class="card header">
+      <!-- Rad 1 -->
+      <div class="header_row_one">
+        <h2 id="legTitle">Spel: 301</h2>
+        <div class="actions">
+          <button id="againBtn" class="ghost">🔄 Ny omgång</button>
+          <button id="newBtn" class="ghost">🆕 Nya spelare</button>
+        </div>
+      </div>
+      <!-- Rad 2 -->
+      <div class="header_row_two">
+        <div class="left_side">
+          <p id="turnHint">Tur: behövs denna text</p>
+        </div>
+        <div class="right_side input_actions">
+          <input id="score" type="number" min="0" max="180" inputmode="numeric" placeholder="Poäng (0–180)" />
+          <button id="okBtn" class="primary">🎯OK</button>
+          <button id="undoBtn" class="ghost">↩️ Ångra</button>
+        </div>
+      </div>
+    </section>
+    <section id="players" class="players"></section>
+    <section class="card history-board">
+      <h3>📜 Historik</h3>
+      <div id="historyList"></div>
+    </section>
+    <section class="card leaderboard">
+      <h3>🏆 Vinster</h3>
+      <ol id="top10Game" class="list ordered"></ol>
+    </section>
+    <div class="theme-buttons">
+      <button id="themeLightBtn" class="theme-btn" title="Ljust tema">☀️</button>
+      <button id="themeDarkBtn" class="theme-btn" title="Mörkt tema">🌙</button>
+    </div>
+    <footer class="footer">Dart‑räknare – 2025</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,360 @@
+/* ===== Bas / Tema ===== */
+:root {
+  --bg: #0f1216;
+  --card: #171b21;
+  --ink: #e6e9ef;
+  --muted: #9aa3ad;
+  --accent: #00c853; /* grön */
+  --accent-2: #ff5252; /* röd */
+  --line: #232a32;
+}
+
+.light {
+  --bg: #f6f8fb;
+  --card: #ffffff;
+  --ink: #0b1220;
+  --muted: #5b6776;
+  --accent: #0066ff;
+  --accent-2: #c62828;
+  --line: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial;
+  display: flex;
+  justify-content: center;
+}
+
+.hidden {
+  display: none !important;
+}
+.wrap {
+  width: 100%;
+  max-width: 900px;
+  padding: 16px;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 4vh;
+  gap: 12px;
+}
+
+#start .card {
+  width: 100%;
+  max-width: none;
+}
+
+#game .card {
+ /* margin-top: 12px; */
+}
+
+#game .card.header {
+  margin-top: 0;
+}
+
+h1, h2, h3 {
+  margin: .25rem 0 .5rem;
+}
+label {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.22);
+}
+
+.muted {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.checkout-separator {
+  color: #F18A00;
+  font-weight: bold;
+  padding: 0 4px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.row_two {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+.row_two .dropdown-container {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: flex-start;
+}
+.row_two .hint {
+  margin-top: 8px;
+  font-size: 0.85rem;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  outline: none;
+}
+input::placeholder {
+  color: var(--muted);
+}
+
+button {
+  border: 1px solid transparent;
+  background: var(--line);
+  color: var(--ink);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+button.primary {
+  background: var(--accent);
+  color: white;
+}
+button.ghost {
+  background: transparent;
+  border-color: var(--line);
+}
+button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+/* ===== Tema-knappar ===== */
+.theme-buttons {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  display: flex;
+  gap: 8px;
+}
+.theme-btn {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 8px;
+  font-size: 1rem;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.theme-btn:hover {
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
+/* ===== Header ===== */
+.game-meta p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ===== Spelare / Mobil layout ===== */
+.players {
+  display: grid;
+  grid-template-columns: 1fr; /* Alltid en kolumn för full bredd */
+  gap: 6px;
+  margin: 0;
+}
+
+.player.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.22);
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 0px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.player.card.active {
+  border-color: #F18A00;
+  border-width: 2px;
+}
+.player.card:hover {
+  transform: scale(1.02);
+}
+.player.card .row1 {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0; /* Säkerställer att ingen extra marginal läggs till */
+}
+.player.card .row1 .name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex: 1;
+  min-width: 100px;
+}
+.player.card .row1 .score {
+  font-size: 1.8rem; /* Ökad storlek för poäng */
+  font-weight: 600;
+  color: var(--accent);
+}
+.player.card .row2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: nowrap; /* Förhindra radbrytning */
+  margin: 0; /* Säkerställer att ingen extra marginal läggs till */
+}
+.player.card .row2 .checkouts {
+  background: var(--card);
+  padding: 0px 0px;
+  border-radius: 0px;
+  color: var(--ink);
+  font-style: normal;
+  font-size: 0.9rem;
+  flex: 1; /* Ta upp tillgängligt utrymme */
+  max-width: 60%; /* Begränsa bredden för att ge plats åt snitt */
+  overflow: hidden; /* Klipp lång text */
+  text-overflow: ellipsis; /* Visa ellips för lång text */
+  white-space: nowrap; /* Förhindra radbrytning i checkouts */
+}
+.player.card .row2 .average {
+  font-size: 0.9rem; /* Samma storlek som utgångar */
+  font-weight: 600;
+  color: var(--muted);
+  flex-shrink: 0; /* Förhindra att snittet krymper */
+}
+
+/* ===== Inmatning (sticky i mobil) ===== */
+.inputbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  position: sticky;
+  bottom: 8px;
+  margin-top: 6px;
+}
+.inputbar input {
+  flex: 1;
+}
+
+/* ===== Listor ===== */
+.list {
+  margin: 0;
+  padding-left: 18px;
+}
+.list.ordered {
+  padding-left: 28px;
+}
+.list li {
+  margin: 4px 0;
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  color: #8f98a3;
+  font-size: .8rem;
+  margin: 14px 0 6px;
+}
+
+.card.header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header_row_one {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_row_two {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header_row_two .left_side {
+  flex: 1;
+}
+
+.header_row_two .right_side {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header_row_two p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.input_actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.row_two > div {
+  flex: none;
+  width: 50%;
+  min-width: 120px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input#score {
+  font-size: 0.8rem;
+  padding: 10px 14px;
+  height: auto;
+  width: 120px;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
