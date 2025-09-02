@@ -14,7 +14,7 @@
     <div class="card">
       <div class="row">
         <label for="names">Spelare (kommaseparerade)</label>
-        <input id="names" type="text" placeholder="t.ex. Anna, Bo, Cecilia" />
+        <input id="names" type="text" placeholder="t.ex. Anna, Bosse, Cecilia" />
       </div>
       <div class="row_two">
         <div>
@@ -64,9 +64,10 @@
           <p id="turnHint">Tur: behövs denna text</p>
         </div>
         <div class="right_side input_actions">
+          <button id="dartBoardBtn" class="primary" data-symbol="🎯">🎯</button>
           <input id="score" type="number" min="0" max="180" inputmode="numeric" placeholder="Poäng (0–180)" />
-          <button id="okBtn" class="primary">🎯OK</button>
-          <button id="undoBtn" class="ghost">↩️ Ångra</button>
+          <button id="okBtn" class="primary">OK</button>
+          <button id="undoBtn" class="ghost">Ångra</button>
         </div>
       </div>
     </section>
@@ -81,6 +82,234 @@
     </section>
     <footer class="footer">Dart‑räknare – 2025</footer>
   </main>
+
+
+
+
+  <!-- Dartboard Modal -->
+<!-- Dartboard Modal -->
+  <div id="dartModal" class="modal hidden">
+
+    <div class="modal-content">
+
+      <div id="scoreDisplay" class="score-display">Poäng: 0</div> <!-- Lägger till klass för styling -->
+      <svg id="dartBoard" width="300" height="300" style="margin-top: 40px;" viewBox="0 0 453 453">
+        <defs>
+          <style>
+            .cls-1, .cls-2 {
+              isolation: isolate;
+            }
+
+            .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+              fill: #e7e4c7;
+            }
+
+            .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16 {
+              fill-rule: evenodd;
+            }
+
+            .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16 {
+              stroke: #d0edfd;
+            }
+
+            .cls-3, .cls-13 {
+              stroke-miterlimit: 4;
+              stroke-width: 1.1px;
+            }
+
+            .cls-4, .cls-12 {
+              stroke-miterlimit: 4;
+              stroke-width: 1.1px;
+            }
+
+            .cls-5, .cls-11 {
+              stroke-miterlimit: 4;
+              stroke-width: 1.1px;
+            }
+
+            .cls-6, .cls-14 {
+              stroke-miterlimit: 4;
+              stroke-width: 1.1px;
+            }
+
+            .cls-7, .cls-15 {
+              stroke-miterlimit: 4;
+              stroke-width: 1.1px;
+            }
+
+            .cls-9 {
+              fill: red;
+            }
+
+            .cls-9, .cls-10, .cls-16 {
+              stroke-width: 1.1px;
+            }
+
+            .cls-17 {
+              letter-spacing: -.07em;
+            }
+
+            .cls-2 {
+              fill: #fff;
+              font-family: ArialMT, Arial;
+              font-size: 28px;
+            }
+
+            .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16 {
+              fill: #00a000;
+            }
+          </style>
+        </defs>
+        <g id="layer1">
+          <g id="Board">
+            <g id="BaseBoard">
+              <path id="path1307" class="cls-8" d="M453,226.5c0,125.09-101.41,226.5-226.5,226.5S0,351.59,0,226.5,101.41,0,226.5,0s226.5,101.41,226.5,226.5Z"/>
+            </g>
+            <g id="Inside_Spider" data-name="Inside Spider">
+              <path id="DoubleRed" class="cls-9" d="M397.05,226.5c0,94.19-76.36,170.55-170.55,170.55S55.95,320.69,55.95,226.5,132.31,55.95,226.5,55.95s170.55,76.36,170.55,170.55Z"/>
+              <path id="path2195" class="cls-10" d="M387.95,226.5c0,89.17-72.28,161.45-161.44,161.46-89.17,0-161.45-72.28-161.46-161.44h0c0-89.18,72.28-161.47,161.44-161.47,89.17,0,161.45,72.28,161.46,161.44h0Z"/>
+              <path id="TrebleRed" class="cls-9" d="M334.05,226.5c0,59.4-48.15,107.55-107.55,107.55s-107.55-48.15-107.55-107.55,48.15-107.55,107.55-107.55,107.55,48.15,107.55,107.55Z"/>
+              <path id="path2197" class="cls-10" d="M324.95,226.5c.01,54.37-44.06,98.46-98.43,98.47-54.37.01-98.46-44.06-98.47-98.43v-.04c-.01-54.37,44.06-98.46,98.43-98.47,54.37-.01,98.46,44.06,98.47,98.43v.04Z"/>
+              <g id="GreenDoubleSpiders">
+                <path id="path4826" class="cls-11" d="M149.07,74.54c15.95-8.12,33.07-13.69,50.75-16.49l26.68,168.45-77.43-151.96Z"/>
+                <path id="path4830" class="cls-15" d="M74.54,149.07c8.12-15.95,18.71-30.51,31.36-43.17l120.6,120.6-151.96-77.43Z"/>
+                <path id="path4832" class="cls-13" d="M58.05,253.18c-2.8-17.68-2.8-35.68,0-53.36l168.45,26.68-168.45,26.68Z"/>
+                <path id="path4834" class="cls-12" d="M105.9,347.1c-12.65-12.65-23.24-27.22-31.36-43.17l151.96-77.43-120.6,120.6Z"/>
+                <path id="path4836" class="cls-14" d="M199.82,394.95c-17.68-2.8-34.8-8.36-50.75-16.49l77.43-151.96-26.68,168.45Z"/>
+                <path id="path4838" class="cls-11" d="M303.93,378.46c-15.95,8.12-33.07,13.69-50.75,16.49l-26.68-168.45,77.43,151.96Z"/>
+                <path id="path4840" class="cls-15" d="M378.46,303.93c-8.12,15.95-18.71,30.51-31.36,43.17l-120.6-120.6,151.96,77.43Z"/>
+                <path id="path4842" class="cls-13" d="M394.95,199.82c2.8,17.68,2.8,35.68,0,53.36l-168.45-26.68,168.45-26.68Z"/>
+                <path id="path4844" class="cls-12" d="M347.1,105.9c12.65,12.65,23.24,27.22,31.36,43.17l-151.96,77.43,120.6-120.6Z"/>
+                <path id="path4846" class="cls-14" d="M253.18,58.05c17.68,2.8,34.8,8.36,50.75,16.49l-77.43,151.96,26.68-168.45Z"/>
+              </g>
+              <g id="g4876">
+                <path id="path4878" class="cls-5" d="M153.2,82.65c15.1-7.69,31.31-12.96,48.04-15.61l25.26,159.46-73.3-143.85Z"/>
+                <path id="path4880" class="cls-7" d="M82.65,153.2c7.69-15.1,17.71-28.89,29.69-40.87l114.16,114.16-143.85-73.3Z"/>
+                <path id="path4882" class="cls-3" d="M67.04,251.76c-2.65-16.73-2.65-33.78,0-50.51l159.46,25.26-159.46,25.26Z"/>
+                <path id="path4884" class="cls-4" d="M112.34,340.66c-11.98-11.98-22-25.77-29.69-40.87l143.85-73.3-114.16,114.16Z"/>
+                <path id="path4886" class="cls-6" d="M201.24,385.96c-16.73-2.65-32.95-7.92-48.04-15.61l73.3-143.85-25.26,159.46Z"/>
+                <path id="path4888" class="cls-5" d="M299.8,370.35c-15.1,7.69-31.31,12.96-48.04,15.61l-25.26-159.46,73.3,143.85Z"/>
+                <path id="path4890" class="cls-7" d="M370.35,299.8c-7.69,15.1-17.71,28.89-29.69,40.87l-114.16-114.16,143.85,73.3Z"/>
+                <path id="path4892" class="cls-3" d="M385.96,201.24c2.65,16.73,2.65,33.78,0,50.51l-159.46-25.26,159.46-25.26Z"/>
+                <path id="path4894" class="cls-4" d="M340.66,112.34c11.98,11.98,22,25.77,29.69,40.87l-143.85,73.3,114.16-114.16Z"/>
+                <path id="path4896" class="cls-6" d="M251.76,67.04c16.73,2.65,32.95,7.92,48.04,15.61l-73.3,143.85,25.26-159.46Z"/>
+              </g>
+              <g id="GreenTrebleSpiders">
+                <path id="path4856" class="cls-11" d="M177.67,130.67c10.06-5.12,20.86-8.63,32-10.4l16.82,106.23-48.83-95.83Z"/>
+                <path id="path4858" class="cls-15" d="M130.67,177.67c5.12-10.06,11.8-19.24,19.78-27.22l76.05,76.05-95.83-48.83Z"/>
+                <path id="path4860" class="cls-13" d="M120.27,243.32c-1.77-11.15-1.77-22.5,0-33.65l106.23,16.82-106.23,16.82Z"/>
+                <path id="path4862" class="cls-12" d="M150.45,302.55c-7.98-7.98-14.65-17.17-19.78-27.22l95.83-48.83-76.05,76.05Z"/>
+                <path id="path4864" class="cls-14" d="M209.68,332.73c-11.15-1.77-21.95-5.27-32-10.4l48.83-95.83-16.82,106.23Z"/>
+                <path id="path4866" class="cls-11" d="M275.33,322.33c-10.06,5.12-20.86,8.63-32,10.4l-16.82-106.23,48.83,95.83Z"/>
+                <path id="path4868" class="cls-15" d="M322.33,275.33c-5.12,10.06-11.8,19.24-19.78,27.22l-76.05-76.05,95.83,48.83Z"/>
+                <path id="path4870" class="cls-13" d="M332.73,209.68c1.77,11.15,1.77,22.5,0,33.65l-106.23-16.82,106.23-16.82Z"/>
+                <path id="path4872" class="cls-12" d="M302.55,150.45c7.98,7.98,14.65,17.17,19.78,27.22l-95.83,48.83,76.05-76.05Z"/>
+                <path id="path4874" class="cls-14" d="M243.32,120.27c11.15,1.77,21.95,5.27,32,10.4l-48.83,95.83,16.82-106.23Z"/>
+              </g>
+              <g id="g5771">
+                <path id="path5773" class="cls-5" d="M181.8,138.78c9.2-4.69,19.09-7.9,29.29-9.52l15.4,97.24-44.7-87.72Z"/>
+                <path id="path5775" class="cls-7" d="M138.78,181.8c4.69-9.2,10.8-17.61,18.1-24.92l69.61,69.61-87.72-44.7Z"/>
+                <path id="path5777" class="cls-3" d="M129.26,241.9c-1.62-10.2-1.62-20.6,0-30.8l97.24,15.4-97.24,15.4Z"/>
+                <path id="path5779" class="cls-4" d="M156.89,296.11c-7.31-7.31-13.41-15.71-18.1-24.92l87.72-44.7-69.61,69.61Z"/>
+                <path id="path5781" class="cls-6" d="M211.1,323.74c-10.2-1.62-20.09-4.83-29.29-9.52l44.7-87.72-15.4,97.24Z"/>
+                <path id="path5783" class="cls-5" d="M271.2,314.22c-9.2,4.69-19.09,7.9-29.29,9.52l-15.4-97.24,44.7,87.72Z"/>
+                <path id="path5785" class="cls-7" d="M314.22,271.2c-4.69,9.2-10.8,17.61-18.1,24.92l-69.61-69.61,87.72,44.7Z"/>
+                <path id="path5787" class="cls-3" d="M323.74,211.1c1.62,10.2,1.62,20.6,0,30.8l-97.24-15.4,97.24-15.4Z"/>
+                <path id="path5789" class="cls-4" d="M296.11,156.89c7.31,7.31,13.41,15.71,18.1,24.92l-87.72,44.7,69.61-69.61Z"/>
+                <path id="path5791" class="cls-6" d="M241.9,129.26c10.2,1.62,20.09,4.83,29.29,9.52l-44.7,87.72,15.4-97.24Z"/>
+              </g>
+              <path id="path5939" class="cls-16" d="M242.95,226.5c0,9.09-7.36,16.45-16.45,16.45-9.09,0-16.45-7.36-16.45-16.45h0c0-9.09,7.36-16.46,16.45-16.46,9.09,0,16.45,7.36,16.45,16.45h0Z"/>
+              <path id="path5944" class="cls-9" d="M233.4,226.5c0,3.81-3.09,6.9-6.9,6.9s-6.9-3.09-6.9-6.9,3.09-6.9,6.9-6.9,6.9,3.09,6.9,6.9Z"/>
+            </g>
+            <g id="BoardNumbers">
+              <g id="text6007" class="cls-1">
+                <text class="cls-2" transform="translate(209.55 38.67)"><tspan x="0" y="0">20</tspan></text>
+              </g>
+              <g id="text6895" class="cls-1">
+                <text class="cls-2" transform="translate(278.37 46.13)"><tspan x="0" y="0">1</tspan></text>
+              </g>
+              <g id="text6903" class="cls-1">
+                <text class="cls-2" transform="translate(326.52 75.97)"><tspan x="0" y="0">18</tspan></text>
+              </g>
+              <g id="text6911" class="cls-1">
+                <text class="cls-2" transform="translate(379.74 122.76)"><tspan x="0" y="0">4</tspan></text>
+              </g>
+              <g id="text6915" class="cls-1">
+                <text class="cls-2" transform="translate(400.42 180.73)"><tspan x="0" y="0">13</tspan></text>
+              </g>
+              <g id="text6966" class="cls-1">
+                <text class="cls-2" transform="translate(413.65 235.65)"><tspan x="0" y="0">6</tspan></text>
+              </g>
+              <g id="text6923" class="cls-1">
+                <text class="cls-2" transform="translate(398.05 293.97)"><tspan x="0" y="0">10</tspan></text>
+              </g>
+              <g id="text6927" class="cls-1">
+                <text class="cls-2" transform="translate(369.23 353.64)"><tspan x="0" y="0">15</tspan></text>
+              </g>
+              <g id="text6931" class="cls-1">
+                <text class="cls-2" transform="translate(332.62 396.36)"><tspan x="0" y="0">2</tspan></text>
+              </g>
+              <g id="text6975" class="cls-1">
+                <text class="cls-2" transform="translate(269.22 423.14)"><tspan x="0" y="0">17</tspan></text>
+              </g>
+              <g id="text6979" class="cls-1">
+                <text class="cls-2" transform="translate(220.4 434.67)"><tspan x="0" y="0">3</tspan></text>
+              </g>
+              <g id="text6983" class="cls-1">
+                <text class="cls-2" transform="translate(152.25 425.51)"><tspan x="0" y="0">19</tspan></text>
+              </g>
+              <g id="text6987" class="cls-1">
+                <text class="cls-2" transform="translate(102.75 399.75)"><tspan x="0" y="0">7</tspan></text>
+              </g>
+              <g id="text6991" class="cls-1">
+                <text class="cls-2" transform="translate(51.56 353.64)"><tspan x="0" y="0">16</tspan></text>
+              </g>
+              <g id="text6995" class="cls-1">
+                <text class="cls-2" transform="translate(32.91 299.39)"><tspan x="0" y="0">8</tspan></text>
+              </g>
+              <g id="text7011" class="cls-1">
+                <text class="cls-2" transform="translate(11.89 235.31)"><tspan class="cls-17" x="0" y="0">1</tspan><tspan x="13.49" y="0">1</tspan></text>
+              </g>
+              <g id="text7015" class="cls-1">
+                <text class="cls-2" transform="translate(17.99 177.68)"><tspan x="0" y="0">14</tspan></text>
+              </g>
+              <g id="text7019" class="cls-1">
+                <text class="cls-2" transform="translate(61.39 116.99)"><tspan x="0" y="0">9</tspan></text>
+              </g>
+              <g id="text7023" class="cls-1">
+                <text class="cls-2" transform="translate(92.24 74.27)"><tspan x="0" y="0">12</tspan></text>
+              </g>
+              <g id="text7027" class="cls-1">
+                <text class="cls-2" transform="translate(159.03 47.83)"><tspan x="0" y="0">5</tspan></text>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+
+      <div id="cursor" class="cursor" style="width: 10px; height: 10px;"></div>
+      <div class="modal-actions">
+      <button id="undoModal" class="ghost">↩️ Ångra</button>
+      <button id="closeModal" class="primary">Stäng</button>
+    </div>
+    </div>
+  </div>
+  <style>
+    .score-display {
+      position: relative;
+      z-index: 10; /* Sätter texten ovanför tavlan */
+      margin-bottom: 10px;
+    }
+    .modal-content {
+      position: relative;
+    }
+    svg#dartBoard {
+      position: relative;
+      z-index: 1; /* Tavlan under texten */
+    }
+  </style>
+
+
 
   <!-- Theme buttons (moved to be global) -->
   <div class="theme-buttons">
